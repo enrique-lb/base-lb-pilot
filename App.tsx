@@ -45,7 +45,7 @@ const App: React.FC = () => {
         description: data.description,
         amountUSDC: data.amount,
         status: BountyStatus.OPEN,
-        maintainerAddress: wallet.address || '',
+        maintainerAddress: wallet.address || '0xSimulatedUser',
         tags: data.tags,
         createdAt: new Date().toISOString()
     };
@@ -53,7 +53,10 @@ const App: React.FC = () => {
     // Simulate API call / Contract interaction
     setBounties([newBounty, ...bounties]);
     setIsModalOpen(false);
-    setView(ViewState.HOME);
+    // Ensure we are on home view to see the new bounty
+    if (view !== ViewState.HOME) {
+        setView(ViewState.HOME);
+    }
   };
 
   const handleViewBounty = (id: number) => {
@@ -97,7 +100,13 @@ const App: React.FC = () => {
         wallet={wallet} 
         onConnect={handleConnectWallet} 
         currentView={view}
-        onNavigate={setView}
+        onNavigate={(targetView) => {
+            if (targetView === ViewState.CREATE) {
+                setIsModalOpen(true);
+            } else {
+                setView(targetView);
+            }
+        }}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

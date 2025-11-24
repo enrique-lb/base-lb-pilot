@@ -23,7 +23,6 @@ const Navbar: React.FC<NavbarProps> = ({ wallet, onConnect, currentView, onNavig
             <span className="text-xl font-bold tracking-tight text-white group-hover:text-base-blue transition-colors">
               Base<span className="text-base-blue text-white">Bounties</span>
             </span>
-             by lightning bounties
           </div>
 
           {/* Navigation Links - Simplified */}
