@@ -1,0 +1,5 @@
+{
+  "name": "Base Bounties",
+  "description": "A decentralized bounty platform on the Base Network using USDC. Connects GitHub issues with on-chain escrow.",
+  "requestFramePermissions": []
+}
